@@ -1,4 +1,4 @@
-package be.intecbrussel.order_management_system.model.order_table;
+package be.intecbrussel.order_management_system.model;
 
 import java.time.LocalDate;
 
@@ -7,6 +7,10 @@ private boolean isSend;
 private  String orderDeliveryCity;
 private LocalDate orderDate;
 private String orderNumber;
+
+
+    public Order() {
+    }
 
     public Order(boolean isSend, String orderDeliveryCity, LocalDate orderDate) {
         this.isSend = isSend;
@@ -44,5 +48,15 @@ private String orderNumber;
 
     public String getOrderNumber() {
         return orderNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "isSend=" + isSend +
+                ", orderDeliveryCity='" + orderDeliveryCity + '\'' +
+                ", orderDate=" + orderDate +
+                ", orderNumber='" + orderNumber + '\'' +
+                '}';
     }
 }
