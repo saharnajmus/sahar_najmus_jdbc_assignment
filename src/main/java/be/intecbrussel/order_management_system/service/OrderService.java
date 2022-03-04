@@ -21,7 +21,7 @@ public class OrderService {
         this.orderDao = new OrderDao(connection);
     }
 
-    public Optional<String> saveOrder(Order order) throws SQLException {
+    public Optional<Integer> saveOrder(Order order) throws SQLException {
         //ORD-202203-005
         String nextOrderNumber = getNextOrderNumber(order.getOrderDate());
         order.setOrderNumber(nextOrderNumber);

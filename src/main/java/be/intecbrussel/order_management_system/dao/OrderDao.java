@@ -45,12 +45,12 @@ public class OrderDao {
         return Optional.empty();
     }
 
-    public Optional<String> getOrderId(String orderNumber) throws SQLException {
+    public Optional<Integer> getOrderId(String orderNumber) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT id FROM order_table WHERE order_number = ?");
         statement.setString(1, orderNumber);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
-        return Optional.of(resultSet.getString("id"));
+        return Optional.of(resultSet.getInt("id"));
         }
         return Optional.empty();
     }

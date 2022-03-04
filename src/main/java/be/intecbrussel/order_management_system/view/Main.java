@@ -15,9 +15,9 @@ public class Main {
         ProductService productService = new ProductService();
         OrderService orderService = new OrderService();
         Order order = new Order(true, "Brussels", LocalDate.of(2022, 03, 12));
-        Optional<String> order1 = orderService.saveOrder(order);
+        Optional<Integer> order1 = orderService.saveOrder(order);
         if (order1.isPresent()) {
-            int id = Integer.parseInt(order1.get());
+            int id = order1.get();
             Product product1 = new Product("Shirt", 2, BigDecimal.valueOf(20000), id);
             productService.saveProducts(product1);
             Product product2 = new Product("Bag", 2, BigDecimal.valueOf(50000), id);
@@ -30,9 +30,9 @@ public class Main {
         }
 
         Order order2 = new Order(true, "Zaventem", LocalDate.of(2022, 05, 30));
-        Optional<String> order21 = orderService.saveOrder(order2);
+        Optional<Integer> order21 = orderService.saveOrder(order2);
         if (order21.isPresent()) {
-            int id = Integer.parseInt(order21.get());
+            int id = order21.get();
 
             Product product5 = new Product("Shirt", 2, BigDecimal.valueOf(20000), id);
             productService.saveProducts(product5);
@@ -45,9 +45,9 @@ public class Main {
         }
 
         Order order3 = new Order(false, "Zaventem", LocalDate.of(2022, 05, 30));
-        Optional<String> order31 = orderService.saveOrder(order3);
+        Optional<Integer> order31 = orderService.saveOrder(order3);
         if (order31.isPresent()) {
-            int id = Integer.parseInt(order31.get());
+            int id = order31.get();
             Product product9 = new Product("Shirt", 2, BigDecimal.valueOf(20000), id);
         productService.saveProducts(product9);
         Product product10 = new Product("Bag", 2, BigDecimal.valueOf(50000), id);
@@ -59,9 +59,9 @@ public class Main {
         }
 
         Order order4 = new Order( false, "Zaventem", LocalDate.of(2022, 05, 30));
-        Optional<String> order41 = orderService.saveOrder(order4);
+        Optional<Integer> order41 = orderService.saveOrder(order4);
         if (order41.isPresent()) {
-            int id = Integer.parseInt(order31.get());
+            int id = order31.get();
 
             Product product13 = new Product("Shirt", 2, BigDecimal.valueOf(20000), id);
         productService.saveProducts(product13);
