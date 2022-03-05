@@ -29,7 +29,7 @@ public class Main {
 
         }
 
-     /*   Order order2 = new Order(true, "Zaventem", LocalDate.of(2022, 05, 30));
+       Order order2 = new Order(true, "Zaventem", LocalDate.of(2022, 05, 30));
         Optional<Integer> order21 = orderService.saveOrder(order2);
         if (order21.isPresent()) {
             int id = order21.get();
@@ -74,7 +74,7 @@ public class Main {
         }
        /* productService.getAllProducts().forEach(System.out::println);
         orderService.getAllOrders().forEach(System.out::println);  */
-           //Full Order*/
+           //Full Order
         System.out.println("Full Orders");
         orderService.getFullOrder().forEach(System.out::println);
 
