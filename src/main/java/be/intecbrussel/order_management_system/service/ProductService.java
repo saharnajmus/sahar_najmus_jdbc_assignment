@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductService {
     Connection connection = DriverManager.getConnection("jdbc:mysql://moktok.intecbrussel.org:33061/sahar",
@@ -25,4 +26,5 @@ public class ProductService {
     public List<Product> getAllProducts()throws SQLException{
       return  productDao.getAllProductsFromDB();
     }
+
 }

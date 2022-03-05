@@ -58,5 +58,11 @@ public class OrderService {
     public List<Order> getAllOrders()throws SQLException{
         return orderDao.getAllOrdersFromDB();
     }
+    public List<Object> getFullOrder()throws SQLException{
+        return orderDao.getFullOrderFromDB();
+    }
+    public List<Order> getOrderNotSentYet()throws SQLException{
+        return orderDao.getNotSentOrdersFromDB();
+    }
 
 }

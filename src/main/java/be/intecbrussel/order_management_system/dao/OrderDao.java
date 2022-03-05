@@ -1,6 +1,7 @@
 package be.intecbrussel.order_management_system.dao;
 
 import be.intecbrussel.order_management_system.model.Order;
+import be.intecbrussel.order_management_system.model.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -69,6 +70,55 @@ public class OrderDao {
         }
 
         return result;
+    }
+
+    public List<Object> getFullOrderFromDB() throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM order_table RIGHT JOIN order_products op on order_table.id = op.order_id");
+        List<Object> result = new ArrayList<>();
+        while (rs.next()) { // parsing
+            Order order = new Order();
+            order.setOrderNumber(rs.getString("order_number"));
+            order.setOrderDeliveryCity(rs.getString("order_delivery_city"));
+            order.setSend(rs.getBoolean("is_send"));
+            Product product = new Product();
+            product.setOrderId(rs.getInt("order_id"));
+            product.setProductName(rs.getString("product_name"));
+            product.setAmount(rs.getInt("amount"));
+            product.setPricePerUnit(rs.getBigDecimal("price_per_unit"));
+
+            result.add(order);
+            result.add(product);
+
+
+        }
+      return result;
+    }
+    public List<Order> getNotSentOrdersFromDB()throws SQLException{
+
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM order_table WHERE is_send = ?");
+        statement.setBoolean(1, false);
+        ResultSet resultSet = statement.executeQuery();
+        List<Order> result = new ArrayList<>();
+        while (resultSet.next()) {
+            Order order = new Order();
+            order.setOrderNumber(resultSet.getString("order_number"));
+            order.setOrderDeliveryCity(resultSet.getString("order_delivery_city"));
+            order.setSend(resultSet.getBoolean("is_send"));
+            result.add(order);
+        }
+
+        return result;
+
+
+    }
+    public void deleteLastOrder()throws SQLException{
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM order_table WHERE order_number = ?");
+        String orderNumber = getLastOrderNumber().get();
+        statement.setString(1,orderNumber);
+        ResultSet resultSet = statement.executeQuery();
+        System.out.println(resultSet);
+
     }
 
 }

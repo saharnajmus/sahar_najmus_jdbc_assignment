@@ -15,7 +15,7 @@ public class Main {
         ProductService productService = new ProductService();
         OrderService orderService = new OrderService();
         Order order = new Order(true, "Brussels", LocalDate.of(2022, 03, 12));
-        Optional<Integer> order1 = orderService.saveOrder(order);
+       Optional<Integer> order1 = orderService.saveOrder(order);
         if (order1.isPresent()) {
             int id = order1.get();
             Product product1 = new Product("Shirt", 2, BigDecimal.valueOf(20000), id);
@@ -29,7 +29,7 @@ public class Main {
 
         }
 
-        Order order2 = new Order(true, "Zaventem", LocalDate.of(2022, 05, 30));
+     /*   Order order2 = new Order(true, "Zaventem", LocalDate.of(2022, 05, 30));
         Optional<Integer> order21 = orderService.saveOrder(order2);
         if (order21.isPresent()) {
             int id = order21.get();
@@ -72,8 +72,18 @@ public class Main {
         Product product16 = new Product("Scarf", 2, BigDecimal.valueOf(10000), id);
         productService.saveProducts(product16);
         }
-        productService.getAllProducts().forEach(System.out::println);
-        orderService.getAllOrders().forEach(System.out::println);   
+       /* productService.getAllProducts().forEach(System.out::println);
+        orderService.getAllOrders().forEach(System.out::println);  */
+           //Full Order*/
+        System.out.println("Full Orders");
+        orderService.getFullOrder().forEach(System.out::println);
+
+        //Orders not sent yet
+        System.out.println("Orders Have Not been Sent yet ");
+        orderService.getOrderNotSentYet().forEach(System.out::println);
+
+        System.out.println("Delete last Order and it's product");
+
 
     }
 }
